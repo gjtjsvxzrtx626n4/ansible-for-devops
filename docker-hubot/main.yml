@@ -4,7 +4,7 @@
   gather_facts: false
 
   vars:
-    base_image: node:8
+    base_image: node:14
     container_name: hubot_slack
     image_namespace: a4d
     image_name: hubot-slack
@@ -37,8 +37,6 @@
         apt-get remove --purge -y python &&
         rm -rf /var/lib/apt/lists/*
       delegate_to: '{{ container_name }}'
-      args:
-        warn: false
 
     - name: Commit the container.
       command: >

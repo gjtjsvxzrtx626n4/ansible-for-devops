@@ -4,11 +4,11 @@
 set -e
 
 # Install dependencies.
-pip3 install ansible molecule[docker] ansible-lint yamllint docker
+pip3 install ansible molecule molecule-plugins[docker] ansible-lint yamllint docker
 
 cd molecule
 
-# Run default test (CentOS).
+# Run default test (Rocky Linux).
 molecule test
 
 # Run tests on Debian.

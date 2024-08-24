@@ -6,22 +6,22 @@ The architecture for the example web application will be:
 
                        --------------------------
                       |  varnish.test (Varnish)  |
-                      |  192.168.2.2             |
+                      |  192.168.56.2            |
                        --------------------------
                           /                   \
          ----------------------          ----------------------
         |  www1.test (Apache)  |        |  www2.test (Apache)  |
-        |  192.168.2.3         |        |  192.168.2.4         |
+        |  192.168.56.3        |        |  192.168.56.4        |
          ----------------------          ----------------------
                           \                   /
                       ------------------------------
                      |  memcached.test (Memcached)  |
-                     |  192.168.2.7                 |
+                     |  192.168.56.7                |
                       ------------------------------
                           /                   \
      -----------------------------       ----------------------------
     |  db1.test (MySQL - Master)  |     |  db2.test (MySQL - Slave)  |
-    |  192.168.2.5                |     |  192.168.2.6               |
+    |  192.168.56.5               |     |  192.168.56.6              |
      -----------------------------       ----------------------------
 
 *IP addresses and hostnames in this diagram are modeled after local VirtualBox/Vagrant-based VMs.*
@@ -32,7 +32,7 @@ For the purpose of demonstration, Varnish's caching is completely disabled, so y
 
 ## Prerequisites
 
-Before you can run any of these playbooks, you will need to [install Ansible](http://docs.ansible.com/intro_installation.html), and run the following command to download dependencies (from within the same directory as this README file):
+Before you can run any of these playbooks, you will need to [install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html), and run the following command to download dependencies (from within the same directory as this README file):
 
     $ ansible-galaxy install -r requirements.yml
 
@@ -47,7 +47,7 @@ To build the VMs and configure them using Ansible, follow these steps (both from
 
 This guide assumes you already have Vagrant, VirtualBox, and Ansible installed locally.
 
-After everything is booted and configured, visit http://varnish.test/ (if you configured the domain in your hosts file with the line `192.168.2.2  varnish.test`) in a browser, and refresh a few times to see that Varnish, Apache, PHP, Memcached, and MySQL are all working properly!
+After everything is booted and configured, visit http://varnish.test/ (if you configured the domain in your hosts file with the line `192.168.56.2  varnish.test`) in a browser, and refresh a few times to see that Varnish, Apache, PHP, Memcached, and MySQL are all working properly!
 
 ## Build and configure the servers (DigitalOcean)
 

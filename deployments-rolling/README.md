@@ -6,14 +6,14 @@ This project builds a [Node.js](https://nodejs.org/)-based API app inside a VM. 
 
   1. Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
   2. Download and install [Vagrant](http://www.vagrantup.com/downloads.html).
-  3. [Mac/Linux only] Install [Ansible](http://docs.ansible.com/intro_installation.html).
+  3. [Mac/Linux only] Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
   4. Run `ansible-galaxy install -r requirements.yml` in this directory to get the required Ansible roles.
   5. Run `vagrant up` to build the VM and deploy the version of the app specified in `playbooks/vars.yml`.
 
 Once the VM is built, you can test the API by running the following command (copy and paste verbatim, without the leading `$`), which requests the `/hello/:name` endpoint on each server:
 
     $ for i in {2..5}; \
-        do curl -w "\n" "http://192.168.3.$i:8080/hello/john"; \
+        do curl -w "\n" "http://192.168.56.$i:8080/hello/john"; \
       done
 
 If the above command outputs `"hello john"` on four lines, everything worked correctly!
